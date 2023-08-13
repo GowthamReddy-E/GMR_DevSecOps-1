@@ -1,4 +1,8 @@
 1.pod
+  a.restart policy
+     1.Always
+     2.onfailure
+     3.Never
 2.job
 3.cron job
 4.riplica set 
