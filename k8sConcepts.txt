@@ -1,0 +1,20 @@
+1.pod
+2.job
+3.cron job
+4.riplica set 
+5.replication controller
+6.deployment
+   a.recreate
+   b.rollingUpdate
+7.volumes
+8.limitrange
+9.horizantal pod scaling
+10.vertical pod scaling
+11.namespace
+12.liveness & rediness
+13.configMaps
+14.secrets
+15.persistance volumes
+16.persistance volume claim
+17.load balancer
+18.services
