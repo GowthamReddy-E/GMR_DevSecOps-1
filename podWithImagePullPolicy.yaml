@@ -1,0 +1,12 @@
+# image pull policy
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-imagepull
+spec:
+  containers:
+    - name: imagepullcontainer
+      image: nginx:latest
+      imagePullPolicy: Always  # You can change this to "IfNotPresent" or "Never"
+
