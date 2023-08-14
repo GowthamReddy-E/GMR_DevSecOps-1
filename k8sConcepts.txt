@@ -7,22 +7,50 @@
     1.Always
     2.Never
     3.not present
+  c.liveness probe
+    1.http [http get]
+    2.port  [tcp scoket]
+    3.cmd   [exec]
+  d.ready ness probe
+    1.http [http get]
+    2.port  [tcp scoket]
+    3.cmd   [exec]
+  e.volumes
 2.job
+  a.restart policy
+    1.Never
 3.cron job
+  a.restart policy
+    1.Never
 4.riplica set 
 5.replication controller
 6.deployment
-   a.recreate
-   b.rollingUpdate
-7.volumes
-8.limitrange
-9.horizantal pod scaling
-10.vertical pod scaling
-11.namespace
-12.liveness & rediness
-13.configMaps
+  1.strategy
+   a.recreate [all down all up]
+   b.rollingUpdate [one by one down up (blue green deployment)]
+7.services
+8.load balancer
+  a.Application load balancer
+9.limitrange [namespace]
+10.horizantal pod scaling
+11.vertical pod scaling
+12.namespace
+13.configMaps 
 14.secrets
 15.persistance volumes
 16.persistance volume claim
-17.load balancer
-18.services
+17.storage class name
+18.node selector
+19.Affinity
+  a.node Affinity
+  b.pod Affinity
+20.Toleration and Taint
+21.conatiners in pod
+   a.init container
+   b.main container
+   c.sidecar
+22.Demonset
+22.statefillset
+
+
+
