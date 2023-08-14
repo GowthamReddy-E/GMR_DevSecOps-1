@@ -7,5 +7,4 @@ spec:
     - name: podcontainer1
       image: nginx:latest
       ports:
-       - containerPort: 80git status
-       
+       - containerPort: 80
