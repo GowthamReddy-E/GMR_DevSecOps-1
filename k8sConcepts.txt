@@ -3,6 +3,10 @@
      1.Always
      2.onfailure
      3.Never
+  b.image pull policy
+    1.Always
+    2.Never
+    3.not present
 2.job
 3.cron job
 4.riplica set 
