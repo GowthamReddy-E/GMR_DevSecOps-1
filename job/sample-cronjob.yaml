@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-every-1m
+spec:
+  schedule: "*/1 * * * *"  # Runs every 5 minutes
+  jobTemplate:
+    metadata:
+      name: cronjob-job-template
+      labels:
+        zone: cronjob
+    spec:
+      template:
+        metadata:
+          name: cronjob-pod-template
+          labels:
+            zone: cronjob
+        spec:
+          containers:
+            - name: cronjob-cr
+              image: nginx:latest
+          restartPolicy: OnFailure

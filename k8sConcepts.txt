@@ -6,7 +6,7 @@
   b.image pull policy
     1.Always
     2.Never
-    3.not present
+    3.if not present
   c.liveness probe
     1.http [http get]
     2.port  [tcp scoket]

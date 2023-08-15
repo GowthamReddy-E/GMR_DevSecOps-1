@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-job
+spec:
+  completions: 1
+  template:
+    metadata:
+      labels:
+        belongsto: gowtham-sample-job
+        output: printing-echo
+    spec:
+      containers:
+        - name: simple-job-cr
+          image: nginx
+          command: ["echo", "Hello, Kubernetes!"]
+      restartPolicy: Never

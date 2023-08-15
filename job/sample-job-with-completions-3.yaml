@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-with-completions-3
+spec:
+  completions: 3
+  template:
+    metadata:
+      labels:
+        name: job-with-cp
+        color: black
+        zone: job
+    spec:
+      containers:
+        - name: job-with-cp-cr
+          image: nginx
+          command: ["echo","this is 3 completions job"]
+          env: 
+            - name: name
+              value: gowtham
+            - name: color
+              value: black
+      restartPolicy: Never
+
+
+# this job will run with 3 pods 
+# if 3 pods run successfull the job is completed state other wise it will fail

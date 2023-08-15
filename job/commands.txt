@@ -1,0 +1,40 @@
+1.To check the pods in a job
+
+   kubectl get pods -l job-name=+++ your job name +++
+   ===================================================
+
+2.To check the logs of a pod 
+
+    kubectl logs -f  ++++ podname ++++
+    ==================================
+
+3.To watch the pods operations
+
+    kubectl get pods --watch
+    ========================
+
+4.To inspect the job 
+  
+     kubectl describe job +++job name +++
+     ====================================
+
+5.To check the api apiVersion
+  
+    kubectl api-resources | grep cronjob
+    ====================================
+
+6.To check the cron job status
+  
+    kubectl get cronjobs -o wide --watch
+    ====================================
+
+7.To describe the cronjob
+   
+   kubectl describe cronjob +++cronjobname+++
+   ==========================================
+   
+    
+
+
+
+

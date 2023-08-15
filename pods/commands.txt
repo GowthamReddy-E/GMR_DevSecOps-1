@@ -1,0 +1,4 @@
+1.To check the events of pod through watch
+   
+   kubectl get events   --field-selector involvedObject.name=+++pod name+++ --watch
+   ================================================================================
