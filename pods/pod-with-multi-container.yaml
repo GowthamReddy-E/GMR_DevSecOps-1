@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-mc
+spec:
+  containers:
+    - name: mc-cr-one-web
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+    - name: mc-cr-two-db
+      image: postgres:latest
+      env:
+        - name: POSTGRES_DB
+          value: mydb
+        - name: POSTGRES_USER
+          value: user
+        - name: POSTGRES_PASSWORD
+          value: password
+        - name: NameoFTheUser
+          value: Gowtham
+        - name: gmail
+          value: gowthamreddy.6991@gamil.com
+
+
+# The environmental avriable are used inside the container when you need  
