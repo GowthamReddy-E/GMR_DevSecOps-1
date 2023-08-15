@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-hostpath
+spec:
+  containers:
+    - name: pod-hostpath-cr
+      image: nginx:latest
+      volumeMounts:
+        - name: hostpath-volume
+          mountPath: /cr_data
+  volumes:
+    - name: hostpath-volume
+      hostPath:
+        path: /gowtham_hostpath

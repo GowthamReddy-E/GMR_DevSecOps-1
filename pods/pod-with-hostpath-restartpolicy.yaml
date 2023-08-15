@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-hostpath-restart
+  labels: 
+    belongsTo: gowtham
+spec:
+  containers:
+    - name: p-hp-res-cr
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: hostpath-volume
+          mountPath: /cr_data
+  volumes:
+    - name: hostpath-volume
+      hostPath:
+        path: /gowtham_hostpath
+        type: Directory
+  restartPolicy: Always

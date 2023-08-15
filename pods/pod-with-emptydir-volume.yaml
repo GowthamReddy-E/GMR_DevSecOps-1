@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-emptydir
+spec:
+  containers:
+    - name: pod-emptydir-cr
+      image: nginx:latest
+      volumeMounts:
+        - name: pod-shared-data
+          mountPath: .
+  volumes:
+    - name: pod-shared-data
+      emptyDir: {}
