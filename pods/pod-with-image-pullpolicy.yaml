@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod-with-imgpolicy
+spec:
+  containers:
+    - name: pod-with-img-cr
+      image: nginx
+      ports:
+        - containerPort: 80
+      imagePullPolicy: IfNotPresent
