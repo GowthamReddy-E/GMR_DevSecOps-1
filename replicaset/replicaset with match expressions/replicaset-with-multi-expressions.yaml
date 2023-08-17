@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-with-multi-ex
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - webapp
+      - key: cpu_usage
+        operator: In  # Greater than
+        values:
+          - "80"
+          - "85"
+          - "90"
+  template:
+    metadata:
+      labels:
+        app: webapp
+        cpu_usage: "85"
+    spec:
+      containers:
+        - name: rs-with-ml-ex-cr
+          image: nginx:latest
+          ports:
+            - containerPort: 80
