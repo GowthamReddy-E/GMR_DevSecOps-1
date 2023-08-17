@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-with-recreate
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-recreate
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sample-recreate
+    spec:
+      containers:
+        - name: dp-with-re-cr
+          image: nginx:latest
+          ports:
+            - containerPort: 80

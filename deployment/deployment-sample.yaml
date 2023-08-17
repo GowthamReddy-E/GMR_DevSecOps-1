@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-sample
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-dp
+  template:
+    metadata:
+      labels:
+        app: sample-dp
+    spec:
+      containers:
+        - name: dp-smp-cr
+          image: nginx:latest
+          ports:
+            - containerPort: 80
