@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replicationcontroller-simple
+spec:
+  replicas: 3
+  selector:
+    app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - name: rpc-with-sp-cr
+          image: nginx:latest
+          ports:
+            - containerPort: 80
