@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limitrange-at-pod-level
+  namespace: gowtham-ns
+spec:
+  limits:
+  - type: Pod
+    max:
+      memory: "1Gi"
+      cpu: "2"
+    min:
+      memory: "100Mi"
+      cpu: "0.1"
+ 
