@@ -6,3 +6,6 @@ This is my sample devops practise github repository. If you want to use this rep
 mail: gowthamreddy.6991@gmail.com
 
 ph: +91 9381729345
+
+AWS Key file Directory : /c/Users/gowth/Downloads
+master psw: 06aug1996
