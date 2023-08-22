@@ -5,7 +5,7 @@ metadata:
 spec:
   capacity:
     storage: 5Gi
-  accessModes:                      #RWO, RWM, ROO
+  accessModes:                      #RWO, RWM, ROM
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual         # optional
