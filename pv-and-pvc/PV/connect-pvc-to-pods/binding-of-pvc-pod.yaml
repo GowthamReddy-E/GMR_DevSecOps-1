@@ -1,0 +1,77 @@
+# persistent-volume.yaml
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sample-pv-manual
+spec:
+  storageClassName: manual    # optional for manual PV
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data  # Replace with your desired path on the host machine
+
+---
+
+# persistent-volume-claim.yaml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sample-pvc-manual
+spec:
+  storageClassName: manual     # optional, if we didn't creating the storage class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+# pod-with-pvc.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-pvc
+spec:
+  containers:
+    - name: sample-pod-pvc-cr
+      image: nginx:latest
+      volumeMounts:
+        - name: pvc-to-pv-volume
+          mountPath: /var/www/html  # Mount path inside the container
+  volumes:
+    - name: pvc-to-pv-volume
+      persistentVolumeClaim:
+        claimName: sample-pvc-manual
+
+---
+
+# replicaset.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rc-with-pvc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: sample-rc-pvc-cr
+          image: nginx:latest
+          volumeMounts:
+            - name: pvc-to-pv-volume
+              mountPath: /var/www/html  # Mount path inside the container
+      volumes:
+        - name: pvc-to-pv-volume
+          persistentVolumeClaim:
+            claimName: sample-pvc-manual
