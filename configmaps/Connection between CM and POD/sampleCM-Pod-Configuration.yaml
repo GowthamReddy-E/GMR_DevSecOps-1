@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod
+spec:
+  containers:
+    - name: sample-cm-cr
+      image: nginx:latest
+      envFrom:
+        - configMapRef:
+            name: sample-configmap
+
+
+#  This pod is created on the default namespace and also the cm is on the default namespace thats why
+#  we add the cm directly without namespace 

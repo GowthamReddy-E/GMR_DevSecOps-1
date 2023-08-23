@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: df-ns-cm-pod
+spec:
+  containers:
+    - name: diff-ns-cm-cr
+      image: nginx:latest
+      envFrom:
+        - configMapRef:
+            name: example-configmap
+            namespace: gowtham-ns
+
+#  In this pod yaml file we define the namespace also because of the pod will be created on the 
+# default namespace and the CM will be on the other namespace thats why we define namespace explisitly
+# if the configmap and pod will bw the same namespace we dint nedd to specify explicitly
+
+# the configmaps are used for store the common data across the K8S

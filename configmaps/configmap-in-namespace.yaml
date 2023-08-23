@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-configmap
+  namespace: gowtham-ns
+data:
+  key1: value1
+  key2: value2
+  key3: value3
+
+
+# In this yaml file we create a configmap in the namespace of gowtham-ns if we add or access the data inside
+# this confogmap we need to refer namespace also in the pod yaml file 
+# other wise it will throw an error 
