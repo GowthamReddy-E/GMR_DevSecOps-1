@@ -9,11 +9,11 @@
     3.if not present
   c.liveness probe
     1.http [http get]
-    2.port  [tcp scoket]
+    2.port  [tcp socket]
     3.cmd   [exec]
   d.ready ness probe
     1.http [http get]
-    2.port  [tcp scoket]
+    2.port  [tcp socket]
     3.cmd   [exec]
   e.volumes
 2.job
@@ -22,7 +22,7 @@
 3.cron job
   a.restart policy
     1.Never
-4.riplica set 
+4.replica set 
 5.replication controller
 6.deployment
   1.strategy
@@ -32,7 +32,7 @@
 8.load balancer
   a.Application load balancer
 9.limitrange [namespace]
-10.horizantal pod scaling
+10.horizontal pod scaling
 11.vertical pod scaling
 12.namespace
 13.configMaps 
