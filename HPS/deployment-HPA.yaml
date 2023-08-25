@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hpa-app
+  template:
+    metadata:
+      labels:
+        app: hpa-app
+    spec:
+      containers:
+        - name: hpa-cr
+          image: nginx:latest
+          resources:
+            requests:
+              cpu: "100m"  # CPU request (millicores)
+            limits:
+              cpu: "200m"  # CPU limit (millicores)
+          ports:
+            - containerPort: 80
+
+
+--- 
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: example-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-deployment
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 20
