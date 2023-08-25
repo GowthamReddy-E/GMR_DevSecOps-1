@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadbalancer-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loadbalancer
+  template:
+    metadata:
+      labels:
+        app: loadbalancer
+    spec:
+      containers:
+        - name: loadbalancer-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
