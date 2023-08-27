@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: preferred-node-affinity-pod
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 70
+          preference:
+            matchExpressions:
+              - key: zone
+                operator: In
+                values:
+                  - east
+        - weight: 30
+          preference:
+            matchExpressions:
+              - key: zone
+                operator: In
+                values:
+                  - west
+
+
+#  if both are not matched the pod will be schedule on the other node the labels are not met with the labels
