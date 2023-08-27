@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-affinity-pod
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: zone  # This is one of the label keys
+                operator: In
+                values:
+                  - east  # This is one of the values assigned to nodes
+              - key: environment  # This is another label key
+                operator: In
+                values:
+                  - production  # This is another value assigned to nodes

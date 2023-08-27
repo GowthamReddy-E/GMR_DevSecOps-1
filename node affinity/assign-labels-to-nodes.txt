@@ -1,0 +1,16 @@
+1.kubectl label nodes node-name zone=east
+  =======================================
+
+  by using this command we can assign labels into the nodes 
+
+2.kubectl label nodes node-name key1=value1 key2=value2 key3=value3
+  =================================================================
+
+  we can assign multiple keys and values into the nodes at a single shot
+
+3.kubectl label nodes node-name key=value1,key=value2
+  ===================================================
+
+  we can assign multiple values into the single key by using the above command 
+  like: kubectl label nodes node-1 environment=production,stage
+        =======================================================

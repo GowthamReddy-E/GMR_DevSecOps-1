@@ -11,5 +11,9 @@
     kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
     ===========================================================================================================
 
-3.
-kubectl exec -it <pod-name> -c <container-name> -- <command>
+3.To connect to the pod and container
+
+    kubectl exec -it <pod-name> -c <container-name> -- <command>
+    ============================================================
+
+4.

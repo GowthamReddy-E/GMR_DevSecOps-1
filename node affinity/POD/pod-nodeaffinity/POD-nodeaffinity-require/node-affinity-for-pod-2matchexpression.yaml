@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-affinity-pod-2-matchexpressions
+spec:
+ containers:
+    - name: nginx-cr-2-mte
+      image: nginx:latest
+ affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:  # First label requirement
+           - key: zone
+             operator: In
+             values:
+              - east
+        - matchExpressions:  # Second label requirement
+           - key: environment
+             operator: In
+             values:
+               - production

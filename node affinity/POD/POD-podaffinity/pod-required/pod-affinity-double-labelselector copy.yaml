@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-required-podaffinity
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: label1
+                operator: In
+                values:
+                  - value1
+          topologyKey: kubernetes.io/hostname  # Specify the topologyKey
+        - labelSelector:
+            matchExpressions:
+              - key: label2
+                operator: In
+                values:
+                  - value2
+          topologyKey: kubernetes.io/hostname  # Specify the topologyKey
