@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Node
+metadata:
+  name: workertwo
+spec:
+  taints:
+    - key: name
+      value: workertwo
+      effect: NoSchedule
+    - key: account
+      value: aws
+      effect: PreferNoSchedule

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: nginx:latest
+  tolerations:
+    - key: example.com/no-schedule
+      operator: "Equal"
+      value: "value1"
+      effect: "NoSchedule"
+    - key: example.com/prefer-no-schedule
+      operator: "Equal"
+      value: "value2"
+      effect: "PreferNoSchedule"
+    - key: example.com/no-execute
+      operator: "Equal"
+      value: "value3"
+      effect: "NoExecute"
