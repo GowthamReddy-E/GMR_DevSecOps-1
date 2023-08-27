@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Node
+metadata:
+  name: worerthree
+spec:
+  taints:
+    - key: example.com/taint-1
+      value: value1
+      effect: NoSchedule
+    - key: example.com/taint-2
+      value: value2
+      effect: PreferNoSchedule
+    - key: example.com/taint-3
+      value: value3
+      effect: NoExecute
