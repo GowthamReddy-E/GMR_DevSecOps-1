@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: example-statefulset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-app
+  serviceName: example-service
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+        - name: example-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        storageClassName: standard
+        accessModes: [ReadWriteOnce]
+        resources:
+          requests:
+            storage: 1Gi
+
+
+# The PV will be create at the time of create a yaml file 
+# before that the storage class is created first

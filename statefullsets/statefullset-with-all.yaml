@@ -1,0 +1,60 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+provisioner: kubernetes.io/aws-ebs # Replace with your provisioner
+reclaimPolicy: Delete # This sets the reclaim policy for PVs created using this StorageClass
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-volume-pvc
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: example-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete # This sets the reclaim policy for this specific PV
+  storageClassName: standard # This should match the storageClassName defined in the StorageClass # this is optional for manual creating the pv
+  hostPath:
+    path: /path/to/your/host/folder
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: example-statefulset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-app
+  serviceName: example-service
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+        - name: example-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
