@@ -1,4 +1,0 @@
-1.To set the your branch is upstream
-
-  git push --set-upstream origin gowtham
-  ======================================
