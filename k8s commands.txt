@@ -1,19 +1,2 @@
-1.To check the pod request and limits 
-
-    kubectl describe pod resource-limits-pod | grep memory
-    ======================================================
-
-    kubectl describe pod resource-limits-pod | grep cpu
-    ===================================================
-
-2.To install the metrics server 
-   
-    kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-    ===========================================================================================================
-
-3.To connect to the pod and container
-
-    kubectl exec -it <pod-name> -c <container-name> -- <command>
-    ============================================================
-
-4.
+1.kubectl get nodes
+  =================

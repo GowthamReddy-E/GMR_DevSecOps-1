@@ -1,0 +1,123 @@
+#1 which docker version are you using ?
+
+#2 What is a Hypervisor and its types
+
+#3 some important Docker commands
+	
+#4 about Cgroup
+
+#7 Where are Docker volumes stored
+
+#8 What is CNM
+
+#9 CMD and ENTRYPOINT in a Dockerfile
+
+#10 How can you override the ENTRYPOINT at runtime?
+
+#14 typical lifecycle of a docker container
+
+#15 What is the best way to assign a database password to a container
+
+#17 How can one see the logs of a container in real time?
+
+#18 What does -it option tell Docker
+
+#20 Diff b/w stackable image layers and copy-on-write (CoW)
+
+#21 What is scratch image in Docker?
+
+#22  namespace in docker?
+
+#23 difference between the commands ‘docker run’ and ‘docker create’?
+
+#24 How do you expose a container?
+
+#27 ways to create a new image?
+	
+#29 use of the .dockerignore file?
+
+#30 when rebuild why very little time?
+
+#33 What is “null” network driver and use?
+
+#34 debug inside a container?
+
+#36 details about any image ?
+
+#37 check details about a container ?
+
+#39 size of  a container
+
+#40 where the container logs are stored?  location of container logs ?
+
+#42 “docker run ubuntu” the container is getting killed automatically? Why?
+
+#44 Use of ‘docker save’ and ‘docker load’ commands?
+
+#46 What is Multi-Stage Build? Why we need it? How do you create it?
+
+#47 ADD and COPY?
+
+#48 What is intermediate container and how do you reduce it?
+
+#49 How do you troubleshoot a Container?
+
+= = = = = = = = 
+
+K8s version used?
+
+How setup k8s cluster?
+
+Components in workerNode?
+
+What is DaemonSet in k8s?
+
+What is StatefulSet in K8s?
+
+Troubleshoot a Pod?
+
+Diff b/w DaemonSet, Deployment and ReplicaSet?
+
+Use of NodePort service?
+Use of LoadBalancer service?
+
+Diff b/w Init and Sidecar container? And its use?
+
+Diff b/w RC and RS?
+
+About Secrets in k8s?
+
+Diff b/w requests and limits?
+
+What are the various things that can be done to increase Kubernetes security?
+
+How to troubleshoot if the POD is not getting scheduled?
+
+How to run a POD on a particular node?
+
+How do you achieve centralized Log management system in k8s cluster?
+
+What is a Kubernetes label selector?
+
+How can you perform rolling updates with zero downtime in Kubernetes 
+How do you achieve ZERO Downtime deployment? What is Blue/Green Deployment? How achieve?
+
+Diff b/w HPA and VPA How to achieve this?
+
+What is k8s Custom Resources ?
+
+What is Taint and Tolerance? 
+
+Kubernetes handle storage for applications 
+	PV, PVC
+
+Why pods not scheduled on master-node?
+
+How do you monitor Pods?
+
+What is a Kubernetes Namespace
+
+What is the role of a Kubernetes ConfigMap
+
+How can you expose a Kubernetes deployment to the outside world?
+
