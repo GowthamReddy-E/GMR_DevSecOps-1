@@ -1,0 +1,14 @@
+1.kubectl get ingress
+  ===================
+
+  to get the information of ingress
+
+2.kubectl get svc -n ingress-nginx
+  ================================
+
+  to get the information in particular namespace
+
+3.kubectl logs -n ingress-nginx <pod-name>
+  ========================================
+
+  to get the logs of pod in a particular namespace
