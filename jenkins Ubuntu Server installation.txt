@@ -1,0 +1,80 @@
+0. update the server first
+    
+    apt-get update
+    ===============
+    
+1. Check java is installed or not using the below command
+   
+   java --version
+   ==============
+
+2.If not installed java install it
+
+  <!-- java is IMP for jenkins -->
+
+   sudo apt install openjdk-11-jdk         
+   ===============================
+
+3.Update the server
+  
+   sudo apt update
+   ===============
+
+4.Add jenkins key 
+
+  wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+  ==============================================================================
+
+5.create file 
+  
+  sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  ========================================================================================================
+
+6.Update 
+
+  sudo apt update
+  ===============
+
+7.install jenkins
+
+  sudo apt install jenkins
+  ========================
+
+8.Start the jenkins 
+
+  sudo systemctl start jenkins
+  ============================
+
+9.Enable the booting process of jenkins
+
+  sudo systemctl enable jenkins
+  =============================
+
+10.Check the status of jenkins
+ 
+  sudo systemctl status jenkins
+  =============================
+
+11.Give Port Number to the Jenkins 
+    
+  sudo ufw allow 8080
+  ===================
+
+  if you want update the number just change the 8080 into what you want 
+
+12.Login jenkins through web use 
+
+   http://Server-ip-addr:Port-Number
+   =================================
+
+      http://192.192.192.01:8080
+
+      protocol://YourSystemIp:PortNumber
+      ==================================
+
+13.After goto the main page or jenkins page you need to login by using password the password is located in the 
+   below path in maximum times .or it will show the path where the password is located 
+
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   ======================================================
+

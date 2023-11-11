@@ -1,0 +1,5 @@
+1. to download the images from the docker hub
+    docker pull nginx
+    docker network ls
+    docker inspect containername or id 
+    docker inspect imagename or id
