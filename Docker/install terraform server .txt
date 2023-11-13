@@ -1,0 +1,14 @@
+## CentOs
+
+goto this url you get all the info to install the terraform 
+
+   https://www.terraform.io/
+   =========================
+
+
+sudo yum install -y yum-utils
+=============================
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+=========================================================================================
+sudo yum -y install terraform
+=============================

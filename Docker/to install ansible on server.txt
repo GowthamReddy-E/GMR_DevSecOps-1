@@ -1,0 +1,32 @@
+Install the EPEL repository (Extra Packages for Enterprise Linux):
+==================================================================
+  sudo yum install epel-release
+
+Update your package manager:
+============================
+  sudo yum update
+
+Install Ansible:
+================
+  sudo yum install ansible
+
+Verify Installation
+===================
+After the installation is complete, you can verify it by checking the Ansible version:
+
+   ansible --version
+   -----------------
+
+   =================================
+   ansible all -i localhost, -m ping
+   =================================
+
+
+
+This command should display information about the installed Ansible version.
+Configuration By default, Ansible should work with its default configuration.
+However, you can edit the configuration file if needed.
+The main configuration file is usually located at /etc/ansible/ansible.cfg.
+
+Now you have Ansible installed on your CentOS server,
+and you can start using it to automate tasks or manage configurations on remote machines.
