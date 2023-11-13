@@ -1,0 +1,196 @@
+Prerequisites:
+Ubuntu: 20.04[t2.medium]
+
+MasterNode setup steps:
+	#apt-get update -y
+	#sudo apt install docker.io -y
+	#docker --version
+	#sudo systemctl enable docker
+	#hostnamectl set-hostname Master
+        #apt-get update -y
+        #apt-get install -y apt-transport-https curl -y
+        #curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+        #cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+        #apt-get update -y
+        #apt-get install -y kubelet kubeadm kubectl -y
+        #kubeadm init
+        
+____________________________________________________________________________________
+_________________________________________________________________________________________________________
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.37.136:6443 --token s2wr73.yu80hwdjvmid2wl1 \
+        --discovery-token-ca-cert-hash sha256:84a8b4bc9166d33fc255c62ac3b81c565af630befa58b6b9d535f196666e6a69 
+
+_______________________To create a join key run this command _____________________
+                    
+                      #kubeadm token create --print-join-command
+__________________________________________________________________________________
+
+token :1:
+---------
+kubeadm join 172.31.37.136:6443 --token b2vp6p.oirjublckbw621q1 --discovery-token-ca-cert-hash sha256:84a8b4bc9166d33fc255c62ac3b81c565af630befa58b6b9d535f196666e6a69
+__________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+		#vi /etc/docker/daemon.json
+
+		{
+  		  "exec-opts": ["native.cgroupdriver=systemd"]
+		}
+
+_____________________________________________________________________
+
+Run This commands to start the master:
+______________________________________
+
+# mkdir -p $HOME/.kube
+# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# export KUBECONFIG=/etc/kubernetes/admin.conf
+
+
+#kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml  [WAVE NETWORK]
+
+#kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml   
+[FLANNEL NETWORK]
+
+
+if the server shows refused use the bellow commands:
+____________________________________________________
+ 
+ sudo systemctl daemon-reload && sudo systemctl restart docker && sudo systemctl restart kubelet
+
+
+
+
+
+
+
+
+
+
+_________________________________________________
+_________________________________________________
+_________________________________________________
+
+jay Tutorial :
+--------------
+Prerequisites:
+Ubuntu: 20.04
+
+MasterNode setup steps:
+	#apt-get update
+	#sudo apt install docker.io
+	#docker --version
+	#sudo systemctl enable docker
+
+	#hostnamectl set-hostname Master
+	#apt-get update && apt-get install -y apt-transport-https curl
+	#curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+	#cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+		deb https://apt.kubernetes.io/ kubernetes-xenial main
+		EOF
+	#apt-get update
+	#apt-get install -y kubelet kubeadm kubectl
+	#kubeadm init
+	 error: [ERROR NumCPU]: the number of available CPUs 1 is less than the required 2
+	#kubeadm init --ignore-preflight-errors=all
+	error: [kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+[kubelet-check] It seems like the kubelet isn't running or healthy.
+
+	#vi /etc/docker/daemon.json
+{
+    "exec-opts": ["native.cgroupdriver=systemd"]
+}
+
+Then,
+sudo systemctl daemon-reload
+ sudo systemctl restart docker
+ sudo systemctl restart kubelet
+
+#kubeadm init --ignore-preflight-errors=all
+# mkdir -p $HOME/.kube
+# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# export KUBECONFIG=/etc/kubernetes/admin.conf
+# kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+Or (if not working)
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+#kubectl get nodes
+
+
+
+WorkerNode setup steps:
+#apt-get update
+	#sudo apt install docker.io
+	#docker --version
+	#sudo systemctl enable docker
+
+	#hostnamectl set-hostname Slave1
+	#apt-get update && apt-get install -y apt-transport-https curl
+	#curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+	cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+	deb https://apt.kubernetes.io/ kubernetes-xenial main
+	EOF
+	#apt-get update
+	#apt-get install -y kubelet kubeadm kubectl
+
+#kubectl get nodes
+	Error? The connection to the server localhost:8080 was refused - did you specify the right host or port?
+	then, (run the command # kubeadm token create --print-join-command in master-node and copy/paste the output command in slave node here.. as like below)
+	# kubeadm join 172.31.40.156:6443 --token vfkqmd.g3wezc457v2qq5zs \
+		--discovery-token-ca-cert-hash sha256:8ef4cac187753c41a25a60ec155a69d02d416e531b1330bef1256cb54e4644d7
+	hanging issue.. 'cgroupfs'>: then,
+
+Create directory $HOME/.kube
+then Add master $HOME/.kube/config file into slave
+
+Now try ‘kubeadm join…’
+Again error ?
+
+Then, open master node port 6443 into AWS console for all nodes.. like, TCP all 0.0.0.0/0
+Now, run kubeadm join…
+Error again? Like,
+[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+[kubelet-check] It seems like the kubelet isn't running or healthy.
+
+#vi /etc/docker/daemon.json
+{
+    "exec-opts": ["native.cgroupdriver=systemd"]
+}
+
+Then,
+sudo systemctl daemon-reload
+ sudo systemctl restart docker
+ sudo systemctl restart kubelet
+
+Now run ‘kubeadm join… with --ignore-preflight-errors=all option
+
+kubectl get nodes
+
+
+<<< repeat the same 'WorkerNode' setup steps to setup more worker nodes >>>
+
+
+
+beeram.sarathkumar@gmail.com
+7@aws
+          

@@ -1,0 +1,12 @@
+1.sudo service jenkins stop
+  =========================
+
+  First, you need to stop the Jenkins service if it's currently running. You can do this using the following command
+
+2.sudo apt-get remove --purge jenkins
+  ===================================
+
+  To uninstall the Jenkins package
+  The --purge option removes not only the package but also its configuration files
+
+3.

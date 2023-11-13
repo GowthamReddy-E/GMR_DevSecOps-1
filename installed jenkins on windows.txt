@@ -1,0 +1,20 @@
+install java
+
+...<jdk-11.0.20_windows-x64_bin.exe>
+
+download and install jenkins
+
+..<https://www.jenkins.io/download/>
+
+set up username and password
+ for password setup it will show on your window --> 
+ copy link address ..> open local pc ..> 
+ paste the link and press enter ..> 
+ it will ask open browser or notepad(choose as ur wish)
+ ..>it will give password 
+ ...> copy and paste the password in jenkins dashboard and press continue
+ ..>set up username and password and press save and continue
+
+
+login at jenkins dashboard
+

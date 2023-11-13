@@ -1,0 +1,46 @@
+## CentOs
+
+# 0. Update the server
+sudo yum update
+
+# 1. Check if Java is installed
+java --version
+
+# 2. If not installed, install Java (OpenJDK 11)
+sudo yum install java-11-openjdk
+
+# 3. Update the server
+sudo yum update
+
+# 4. Add Jenkins key
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+
+# 5. Create Jenkins repository file
+sudo sh -c 'echo -e "[jenkins]\nname=Jenkins\nbaseurl=http://pkg.jenkins.io/redhat-stable\nenabled=1\ngpgcheck=1" > /etc/yum.repos.d/jenkins.repo'
+
+# 6. Update
+sudo yum update
+
+# 7. Install Jenkins
+sudo yum install jenkins
+
+# 8. Start Jenkins
+sudo systemctl start jenkins
+
+# 9. Enable Jenkins to start on boot
+sudo systemctl enable jenkins
+
+# 10. Check Jenkins status
+sudo systemctl status jenkins
+
+# 11. Allow port 8080 through firewall
+sudo firewall-cmd --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+
+# 12. Access Jenkins through the web browser
+# Replace Server-ip-addr with your server's IP address and Port-Number with the desired port
+# For example: http://192.192.192.01:8080
+# Note: You may need to open the URL in a web browser.
+
+# 13. Obtain and display the Jenkins initial admin password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
