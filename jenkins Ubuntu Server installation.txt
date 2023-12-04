@@ -12,13 +12,18 @@
 
   <!-- java is IMP for jenkins -->
 
-   sudo apt install openjdk-11-jdk         
+   sudo yum install openjdk-11-jdk         
    ===============================
 
 3.Update the server
   
-   sudo apt update
-   ===============
+   sudo apt update -y
+   ==================
+
+4.Install the jenkins
+
+   sudo apt install jenkins -y
+
 
 4.Add jenkins key 
 

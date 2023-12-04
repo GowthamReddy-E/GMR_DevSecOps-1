@@ -4,7 +4,7 @@ Install the EPEL repository (Extra Packages for Enterprise Linux):
 
 Update your package manager:
 ============================
-  sudo yum update
+  sudo yum update -y
 
 Install Ansible:
 ================

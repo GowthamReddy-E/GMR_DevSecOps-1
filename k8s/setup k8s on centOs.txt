@@ -1,0 +1,42 @@
+# Disable SELinux
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+# Disable swap (if it's enabled)
+sudo swapoff -a
+sudo sed -i '/swap/d' /etc/fstab
+
+# Install necessary packages
+sudo yum install -y epel-release
+sudo yum install -y docker kubeadm kubelet kubectl
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Start and enable kubelet
+sudo systemctl start kubelet
+sudo systemctl enable kubelet
+
+# Initialize Kubernetes cluster (replace with your desired pod network CIDR)
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+# Set up kubeconfig for the current user
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# Apply a network plugin (Calico in this example)
+kubectl apply -f https://docs.projectcalico.org/v3.18/manifests/calico.yaml
+
+# (Optional) Install bash completion for kubectl
+sudo yum install -y bash-completion
+echo 'source <(kubectl completion bash)' >> $HOME/.bashrc
+
+# (Optional) Install kubectl aliases
+echo 'alias k=kubectl' >> $HOME/.bashrc
+echo 'complete -F __start_kubectl k' >> $HOME/.bashrc
+
+# (Optional) Print join command for worker nodes
+echo "Run this on worker nodes:"
+sudo kubeadm token create --print-join-command
