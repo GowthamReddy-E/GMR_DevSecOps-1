@@ -1,2 +1,62 @@
-1.Ansible is a free open source 
+yum centos ,apt Ubuntu
+=======================
 
+1. yum repolist  >>>> it will list the repositary list 
+
+2. by default the ansible software is not available in the yum and all so we need the third pary repositary [epel]
+   python is also needed for ansible but when we install the ansible automatically the python is also installed
+   yum install epel-release -y >>>>>> to add the epel repo to the yum packages
+     or
+   sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+   yum install openssl   -y >>>>>>>
+   yum install ansible -y  >>>>>> install the ansible
+   ansible --version
+   /etc/ansible/ansible.cfg   >>>>> home directory
+
+
+
+
+sudo apt update
+sudo apt install ansible
+ansible --version
+
+manualy create a /etc/ansible/ansible.cfg    file if not create aytomatically
+we need to give the sudo permissions to the user [NOPASSWD: ALL]  in visudo file for dont ask the password and all 
+
+
+we need to setup tye oneway autentication 
+ssh-keygen
+ssh-copy-id  username@ipaddress
+scp src username#ip:/path 
+
+same user we need to work with ansible
+
+
+groups
+ip address
+
+ansible groupname -m ping 
+ansible all -m ping       >>>>>>>>>>>>>>>>>>>>
+===============================================================================================
+2nd
+
+1.linux command based
+2.Ansible module based
+3.playbooks based
+
+
+1.linux command based:
+=====================
+ansible groupname -b -a "lnx command"
+
+
+
+
+
+2.Ansible module based:
+======================
+
+ansible all -m yum -b -a "name=git state=present/latest"
+
+ansible all -m yum -b -a "name=git state=removed"
